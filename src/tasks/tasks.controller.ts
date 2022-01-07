@@ -1,10 +1,18 @@
-import { Controller, Delete, Get, Post, Put, Body } from '@nestjs/common';
+import {
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
+  Body,
+  Param,
+} from '@nestjs/common';
 
 @Controller('tasks')
 export class TasksController {
   @Get()
-  getTasks(): string {
-    return 'Get Tasks';
+  getTasks(): { message: string } {
+    return { message: 'Ok' };
   }
 
   @Post()
@@ -18,8 +26,9 @@ export class TasksController {
     return 'Update Task';
   }
 
-  @Delete()
-  deleteTask(): string {
-    return 'Delete Task';
+  @Delete(':id')
+  deleteTask(@Param('id') id): string {
+    console.log(id);
+    return `Delete Task number ${id}`;
   }
 }

@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  postgresdb:
+    image: postgres
+    container_name: postgresdb
+    environment:
+      - TZ=America/Santiago
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=testdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+volumes:
+  db-data:
