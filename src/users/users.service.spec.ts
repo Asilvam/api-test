@@ -64,4 +64,12 @@ describe('UsersService', () => {
     // test data retrieval itself
     expect(await service.findOne(userInfoData.id)).toEqual(userInfoData);
   });
+
+  it('should return length to array for findAll', async () => {
+    expect(await service.findAll()).toHaveLength(8);
+  });
+
+  // it('shuoul return a user update', async () => {
+  //
+  // })
 });

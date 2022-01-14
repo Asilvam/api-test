@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { DeleteResult, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { User } from './entities/user.entity';
 
 @Injectable()
@@ -17,7 +17,7 @@ export class UsersService {
   }
 
   findAll(): Promise<User[]> {
-    return this.userRepository.find();
+    return this.userRepository.find({ isActive: true });
   }
 
   findOne(id: number): Promise<User> {
@@ -29,7 +29,9 @@ export class UsersService {
     return this.userRepository.findOne(+id);
   }
 
-  remove(id: number): Promise<DeleteResult> {
-    return this.userRepository.delete(id);
+  async remove(id: number): Promise<User> {
+    await this.userRepository.update(id, { isActive: false });
+    // return this.userRepository.delete(id);
+    return this.userRepository.findOne(+id);
   }
 }

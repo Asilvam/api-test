@@ -5,8 +5,6 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 async function bootstrap() {
-  console.log(process.env.POSTGRES_USER);
-  console.log(process.env.POSTGRES_PASSWORD);
   const app = await NestFactory.create(AppModule);
   await app.listen(process.env.PORT);
 }
