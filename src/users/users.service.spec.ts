@@ -54,10 +54,12 @@ describe('UsersService', () => {
 
   it('should return user info for findOne', async () => {
     // prepare data, insert them to be tested
-    const userInfoData: User = {
-      id: 11,
-      firstName: 'ramon',
+    const userInfoData: { firstName: string; lastName: string; password: string; id: number; userName: string; isActive: boolean } = {
+      id: 1,
+      firstName: 'ale',
       lastName: 'silva',
+      userName:'alesoft',
+      password:'password',
       isActive: true,
     };
     //await repository.insert(userInfoData);
@@ -66,7 +68,7 @@ describe('UsersService', () => {
   });
 
   it('should return length to array for findAll', async () => {
-    expect(await service.findAll()).toHaveLength(8);
+    expect(await service.findAll()).toHaveLength(2);
   });
 
   // it('shuoul return a user update', async () => {

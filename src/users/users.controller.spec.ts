@@ -37,6 +37,8 @@ describe('UsersController', () => {
           id: 1,
           firstName: 'ale',
           lastName: 'silva',
+          userName:'alesoft',
+          password:'password',
           isActive: true,
         },
       ];
