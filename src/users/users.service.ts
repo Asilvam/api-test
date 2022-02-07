@@ -4,7 +4,6 @@ import { UpdateUserDto } from "./dto/update-user.dto";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { User } from "./entities/user.entity";
-import * as bcrypt from "bcrypt";
 
 @Injectable()
 export class UsersService {
@@ -22,28 +21,19 @@ export class UsersService {
     return this.userRepository.find({ isActive: true });
   }
 
-  findOne(id: number): Promise<User> {
-    return this.userRepository.findOne(+id);
+  findOne(userName: string): Promise<User> {
+    return this.userRepository.findOne({ userName });
   }
 
-  async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
-    await this.userRepository.update(id, updateUserDto);
-    return this.userRepository.findOne(+id);
+  async update(userName: string, updateUserDto: UpdateUserDto): Promise<User> {
+    await this.userRepository.update({ userName }, updateUserDto);
+    return this.userRepository.findOne({ userName });
   }
 
-  async remove(id: number): Promise<User> {
-    await this.userRepository.update(id, { isActive: false });
+  async remove(userName: string): Promise<User> {
+    await this.userRepository.update({ userName }, { isActive: false });
     // return this.userRepository.delete(id);
-    return this.userRepository.findOne(+id);
+    return this.userRepository.findOne({ userName });
   }
 
-
-  async hashPassword(password: string) {
-    const salt = await bcrypt.genSalt();
-    return await bcrypt.hash(password, salt);
-  }
-
-  async validatePassword(password: string): Promise<boolean> {
-    return bcrypt.compareSync(password, password);
-  }
 }

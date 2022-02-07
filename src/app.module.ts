@@ -17,7 +17,7 @@ import * as ormconfig from "./ormconfig";
     UsersModule,
     AuthModule,
   ],
-  controllers: [AppController, TasksController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {

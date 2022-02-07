@@ -64,7 +64,7 @@ describe('UsersService', () => {
     };
     //await repository.insert(userInfoData);
     // test data retrieval itself
-    expect(await service.findOne(userInfoData.id)).toEqual(userInfoData);
+    expect(await service.findOne(userInfoData.userName)).toEqual(userInfoData);
   });
 
   it('should return length to array for findAll', async () => {
