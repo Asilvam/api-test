@@ -54,9 +54,9 @@ describe('UsersService', () => {
 
   it('should return user info for findOne', async () => {
     // prepare data, insert them to be tested
-    const userInfoData: { firstName: string; lastName: string; password: string; id: number; userName: string; isActive: boolean } = {
-      id: 1,
-      firstName: 'ale',
+    const userInfoData: { firstName: string; lastName: string; password: string; userId: number; userName: string; isActive: boolean } = {
+      userId: 2,
+      firstName: 'luz',
       lastName: 'silva',
       userName:'alesoft',
       password:'password',
@@ -68,7 +68,7 @@ describe('UsersService', () => {
   });
 
   it('should return length to array for findAll', async () => {
-    expect(await service.findAll()).toHaveLength(2);
+    expect(await service.findAll()).toHaveLength(6);
   });
 
   // it('shuoul return a user update', async () => {

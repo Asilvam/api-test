@@ -34,8 +34,8 @@ describe('UsersController', () => {
     it('should return an array of users', async () => {
       const result: User[] = [
         {
-          id: 1,
-          firstName: 'ale',
+          userId: 2,
+          firstName: 'luz',
           lastName: 'silva',
           userName:'alesoft',
           password:'password',
