@@ -9,8 +9,6 @@ export class AuthController {
 
   @Post("login")
   login(@Body() dto: AuthDto){
-    // const {userName, password}= req.body;
-    // console.log(dto);
     return this.authService.validateUser(dto);
   }
 
